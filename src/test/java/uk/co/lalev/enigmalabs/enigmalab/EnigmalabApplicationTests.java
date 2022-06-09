@@ -74,9 +74,15 @@ class EnigmalabApplicationTests {
 	void TestFrequencyCounter() {
 		var map = FreqCounter.count("AAAA");
 		assertEquals(4, map.get('A'));
-		assertEquals(0, map.get('B'));
+		for (int i=1; i<26; i++) {
+			assertEquals(0, map.get((char)('A'+i)));
+		}
+		assertEquals(4, map.get('A'));
 		assertEquals(0, map.get('C'));
 		assertEquals(0, map.get('D'));
+		assertEquals(0, map.get('F'));
+		assertEquals(0, map.get('Q'));
+		assertEquals(0, map.get('Z'));
 	}
 
 }
