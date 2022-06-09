@@ -3,6 +3,8 @@ package uk.co.lalev.enigmalabs.enigmalab;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -66,7 +68,15 @@ class EnigmalabApplicationTests {
 		assertEquals("AAAAA", c.decrypt("GGGGG"));
 		assertEquals("CAESAR", c.decrypt("IGKYGX"));
 		assertEquals("WWWWW", c.decrypt("CCCCC"));
+	}
 
+	@Test
+	void TestFrequencyCounter() {
+		var map = FreqCounter.count("AAAA");
+		assertEquals(4, map.get('A'));
+		assertEquals(0, map.get('B'));
+		assertEquals(0, map.get('C'));
+		assertEquals(0, map.get('D'));
 	}
 
 }
