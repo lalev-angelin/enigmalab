@@ -26,6 +26,11 @@ public class CaesarCipher {
 
             int position = c-'A';
             position = (position + offset)%26;
+
+            if (position<0) {
+                position = 26+position;   //Mind you, position is negative!
+            }
+
             response.append((char)('A'+position));
         }
         return response.toString();
@@ -44,6 +49,9 @@ public class CaesarCipher {
             position = position - offset;
             if (position<0) {
                 position = 26+position;   //Mind you, position is negative!
+            }
+            if (position>=26) {
+                position = position%26;
             }
 
             response.append((char)('A'+position));

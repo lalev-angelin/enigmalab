@@ -47,15 +47,25 @@ class EnigmalabApplicationTests {
 		assertEquals("CAESAR", c.decrypt("YWAOWN"));
 		assertEquals("WWWWW", c.decrypt("SSSSS"));
 
-		CaesarCipher c = new CaesarCipher(-4);
+		c = new CaesarCipher(-4);
 
-		assertEquals( "EEEEE", c.encrypt("AAAAA"));
-		assertEquals( "GEIWEV", c.encrypt("CAESAR"));
-		assertEquals("AAAAA", c.encrypt("WWWWW"));
+		assertEquals( "WWWWW", c.encrypt("AAAAA"));
+		assertEquals( "YWAOWN", c.encrypt("CAESAR"));
+		assertEquals("SSSSS", c.encrypt("WWWWW"));
 
-		assertEquals("AAAAA", c.decrypt("EEEEE"));
-		assertEquals("CAESAR", c.decrypt("GEIWEV"));
-		assertEquals("WWWWW", c.decrypt("AAAAA"));
+		assertEquals("AAAAA", c.decrypt("WWWWW"));
+		assertEquals("CAESAR", c.decrypt("YWAOWN"));
+		assertEquals("WWWWW", c.decrypt("SSSSS"));
+
+		c = new CaesarCipher(-20);
+
+		assertEquals( "GGGGG", c.encrypt("AAAAA"));
+		assertEquals( "IGKYGX", c.encrypt("CAESAR"));
+		assertEquals("CCCCC", c.encrypt("WWWWW"));
+
+		assertEquals("AAAAA", c.decrypt("GGGGG"));
+		assertEquals("CAESAR", c.decrypt("IGKYGX"));
+		assertEquals("WWWWW", c.decrypt("CCCCC"));
 
 	}
 
