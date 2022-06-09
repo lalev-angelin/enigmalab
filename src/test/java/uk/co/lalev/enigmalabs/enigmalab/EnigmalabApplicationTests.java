@@ -85,4 +85,38 @@ class EnigmalabApplicationTests {
 		assertEquals(0, map.get('Z'));
 	}
 
+	@Test
+	void TestViginereCipher() {
+		ViginereCipher v = new ViginereCipher("ABCDEF");
+		assertEquals("ABCDEFABCDEFABCDEF", v.encrypt("AAAAAAAAAAAAAAAAAA"));
+		assertEquals("ZABCDEZABCDE", v.encrypt("ZZZZZZZZZZZZ"));
+		assertEquals("ZABCDEZABCDE", v.encrypt("ZZZZZZZZZZZZ"));
+		v = new ViginereCipher("VWXYZ");
+		assertEquals("WXYZAWXYZAWX", v.encrypt("BBBBBBBBBBBB"));
+
+
+		v = new ViginereCipher("ABCDEF");
+		assertEquals("AAAAAAAAAAAAAAAAAA", v.decrypt("ABCDEFABCDEFABCDEF"));
+		assertEquals("ZZZZZZZZZZZZ", v.decrypt("ZABCDEZABCDE"));
+		assertEquals("ZZZZZZZZZZZZ", v.decrypt("ZABCDEZABCDE"));
+		v = new ViginereCipher("VWXYZ");
+		assertEquals("BBBBBBBBBBBB", v.decrypt("WXYZAWXYZAWX"));
+	}
+
+	@Test
+	void TestDifferentialCounter() {
+		DifferentialCounter c = new DifferentialCounter(1, 7);
+		var result = c.count("ABCDEFGABCDEFGABCDEFGABCDEFG");
+		assertEquals(4, result.get(1).get('A'));
+		assertEquals(4, result.get(1).get('B'));
+		assertEquals(4, result.get(1).get('C'));
+		assertEquals(4, result.get(1).get('D'));
+
+		assertEquals(4, result.get(7).get('A'));
+		assertEquals(0, result.get(7).get('B'));
+		assertEquals(0, result.get(7).get('C'));
+		assertEquals(0, result.get(7).get('D'));
+		assertEquals(0, result.get(7).get('Z'));
+	}
+
 }
