@@ -83,6 +83,24 @@ class EnigmalabApplicationTests {
 		assertEquals(0, map.get('F'));
 		assertEquals(0, map.get('Q'));
 		assertEquals(0, map.get('Z'));
+
+		map = FreqCounter.countEveryNth("ABCABCABCABC", 1);
+		assertEquals(4, map.get('A'));
+		assertEquals(4, map.get('B'));
+		assertEquals(4, map.get('C'));
+		assertEquals(0, map.get('D'));
+
+		map = FreqCounter.countEveryNth("ABCABCABCABC", 2);
+		assertEquals(2, map.get('A'));
+		assertEquals(2, map.get('B'));
+		assertEquals(2, map.get('C'));
+		assertEquals(0, map.get('D'));
+
+		map = FreqCounter.countEveryNth("ABCABCABCABC", 3);
+		assertEquals(4, map.get('A'));
+		assertEquals(0, map.get('B'));
+		assertEquals(0, map.get('C'));
+		assertEquals(0, map.get('D'));
 	}
 
 	@Test

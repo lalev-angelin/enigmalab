@@ -14,8 +14,10 @@ public class FreqCounterController {
     }
 
     @RequestMapping(value="/freqcounter", method = RequestMethod.POST)
-    public String freqEnd (@RequestParam String text, Model model) {
-        model.addAttribute("freqs", FreqCounter.count(text));
+    public String freqEnd (@RequestParam(value="nth") int nth,
+                           @RequestParam(value="text") String text,
+                           Model model) {
+        model.addAttribute("freqs", FreqCounter.countEveryNth(text, nth));
         return "freqcounter";
     }
 

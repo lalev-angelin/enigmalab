@@ -22,4 +22,23 @@ public class FreqCounter {
 
         return result;
     }
+
+    public static Map<Character, Integer> countEveryNth(String s, int n) {
+        Map<Character, Integer> result = new TreeMap<>();
+
+        for (int i=0; i<26; i++) {
+            char letter=(char)('A'+i);
+            int count=0;
+
+            for (int j=0; j<s.length(); j+=n) {
+                if (s.charAt(j)==letter) {
+                    count++;
+                }
+            }
+
+            result.put((char)('A'+i), count);
+        }
+
+        return result;
+    }
 }
