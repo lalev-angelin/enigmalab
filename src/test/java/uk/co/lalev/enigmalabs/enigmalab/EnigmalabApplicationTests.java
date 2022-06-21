@@ -3,8 +3,6 @@ package uk.co.lalev.enigmalabs.enigmalab;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -105,19 +103,19 @@ class EnigmalabApplicationTests {
 
 	@Test
 	void TestViginereCipher() {
-		ViginereCipher v = new ViginereCipher("ABCDEF");
+		VigenereCipher v = new VigenereCipher("ABCDEF");
 		assertEquals("ABCDEFABCDEFABCDEF", v.encrypt("AAAAAAAAAAAAAAAAAA"));
 		assertEquals("ZABCDEZABCDE", v.encrypt("ZZZZZZZZZZZZ"));
 		assertEquals("ZABCDEZABCDE", v.encrypt("ZZZZZZZZZZZZ"));
-		v = new ViginereCipher("VWXYZ");
+		v = new VigenereCipher("VWXYZ");
 		assertEquals("WXYZAWXYZAWX", v.encrypt("BBBBBBBBBBBB"));
 
 
-		v = new ViginereCipher("ABCDEF");
+		v = new VigenereCipher("ABCDEF");
 		assertEquals("AAAAAAAAAAAAAAAAAA", v.decrypt("ABCDEFABCDEFABCDEF"));
 		assertEquals("ZZZZZZZZZZZZ", v.decrypt("ZABCDEZABCDE"));
 		assertEquals("ZZZZZZZZZZZZ", v.decrypt("ZABCDEZABCDE"));
-		v = new ViginereCipher("VWXYZ");
+		v = new VigenereCipher("VWXYZ");
 		assertEquals("BBBBBBBBBBBB", v.decrypt("WXYZAWXYZAWX"));
 	}
 

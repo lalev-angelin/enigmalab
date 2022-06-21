@@ -1,9 +1,9 @@
 package uk.co.lalev.enigmalabs.enigmalab;
 
-public class ViginereCipher {
+public class VigenereCipher {
     private String key;
 
-    public ViginereCipher(String key) {
+    public VigenereCipher(String key) {
         this.key = key.toUpperCase();
         if (key.length()==0) {
             throw new CipherException("Invalid key length (zero)");
